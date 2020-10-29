@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Vue ToDo</title>
+</head>
+<style>
+    .done {
+        /*add a line through when a todo is checked*/
+        text-decoration: line-through;
+    }
+</style>
+<body>
+
+    <div id="app">
+        <h3>{{title}}</h3>
+
+        <form action="" @submit.prevent ="addTodo">
+            <label for="newTodo">New Todo</label>
+            <input v-model="newTodo" type="text" name="newTodo" id="newTodo">
+            <button type="submit" name="button">Add</button>
+        </form>
+        <button type="button" @click="allDone">Mark All</button>
+        <ul>
+            <li v-for="todo in todos">
+                <input type="checkbox" v-model="todo.done">
+            <span :class="{ done: todo.done}">{{todo.title}}</span>
+            <button type="button" @click="removeTodo(todo)">Remove</button>
+        </li>
+        </ul>
+    </div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+<script src="main.js"></script>
+</body>
+</html>
